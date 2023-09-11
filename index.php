@@ -7,15 +7,14 @@
     <title>Hello</title>
 </head>
 <body>
-    
     <?php 
-    
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-} else {
-    $page = 'home';
-}
-    include "views/$page.php"
+        if (isset($_GET['page'])) {
+            $page = $_GET['page'];
+            echo $page;
+        } else {
+            $page = 'home';
+        }
+        include "controllers/$page.controller.php"
     ?>
 </body>
 </html>
