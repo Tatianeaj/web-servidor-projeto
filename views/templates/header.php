@@ -4,18 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Layout com Eventus e Menu</title>
+
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
   </head>
   <body>
-    <header></header>
-
-    <div class="container mx-auto p-8"></div>
-
-    <footer>
-      <div class="bg-white p-4 flex justify-between items-center shadow-md">
+    <header>
+      <div class="p-4 flex justify-between items-center">
         <div class="flex flex-row">
           <a href="#" class="text-2xl font-bold text-gray-800 flex flex-row">
             <svg
@@ -37,23 +34,29 @@
             <p class="ml-2">Eventus</p>
           </a>
         </div>
-        <ul class="flex space-x-6">
+        <ul class="flex space-x-6 text-lg">
           <li>
-            <a href="#" class="text-gray-800 hover:text-gray-600">Termos</a>
+            <a href="index.php" class="text-gray-800 hover:text-indigo-600">Home</a>
           </li>
           <li>
-            <a href="#" class="text-gray-800 hover:text-gray-600"
-              >Trabalhe Conosco</a
+            <a href="#" class="text-gray-800 hover:text-indigo-600"
+              >Meus Eventos</a
             >
           </li>
           <li>
-            <a href="#" class="text-gray-800 hover:text-gray-600">Empresas</a>
+            <a href="#" class="text-gray-800 hover:text-indigo-600"
+              >Cadastrar Eventos</a
+            >
           </li>
           <li>
-            <a href="#" class="text-gray-800 hover:text-gray-600">Ajuda</a>
+            <?php if (isset($_SESSION['user'])): ?>
+              <a href="index.php?page=logout" class="text-gray-800 hover:text-indigo-600">Sair</a>
+            <?php else: ?>
+              <a href="index.php?page=login" class="text-gray-800 hover:text-indigo-600">Login</a>
+            <?php endif; ?>
           </li>
         </ul>
       </div>
-    </footer>
+    </header>
   </body>
 </html>
