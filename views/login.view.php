@@ -28,12 +28,12 @@
             >
                 <div class="mb-4">
                     <label for="email" class="block text-gray-600">E-mail:</label>
-                    <input id="email" name="email" class="w-full border-gray-300 rounded-md p-2" >
+                    <input id="email" name="email" value="<?= $oldEmail ?>" class="w-full border-gray-300 rounded-md p-2" >
                 </div>
                 <div class="mb-4">
                     <label for="senha" class="block text-gray-600">Senha:</label>
                     <input type="password" id="senha" name="senha" class="w-full border-gray-300 rounded-md p-2" >
-                </div>
+                </div> 
                 <div class="mb-4">
                     <button type="submit" class="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600">Entrar</button>
                 </div>
