@@ -36,7 +36,7 @@
         </div>
         <ul class="flex space-x-6 text-lg">
           <li>
-            <a href="#" class="text-gray-800 hover:text-indigo-600">Home</a>
+            <a href="index.php" class="text-gray-800 hover:text-indigo-600">Home</a>
           </li>
           <li>
             <a href="#" class="text-gray-800 hover:text-indigo-600"
@@ -52,7 +52,7 @@
             <?php if (isset($_SESSION['user'])): ?>
               <a href="index.php?page=logout" class="text-gray-800 hover:text-indigo-600">Sair</a>
             <?php else: ?>
-              <a href="index.php?page=login" class="text-gray-800 hover:text-indigo-600">Log in</a>
+              <a href="index.php?page=login" class="text-gray-800 hover:text-indigo-600">Login</a>
             <?php endif; ?>
           </li>
         </ul>
