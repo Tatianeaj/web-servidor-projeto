@@ -49,9 +49,11 @@
             >
           </li>
           <li>
-            <a href="" class="text-gray-800 hover:text-indigo-600 font-bold"
-              >Log in</a
-            >
+            <?php if (isset($_SESSION['user'])): ?>
+              <a href="index.php?page=logout" class="text-gray-800 hover:text-indigo-600">Sair</a>
+            <?php else: ?>
+              <a href="index.php?page=login" class="text-gray-800 hover:text-indigo-600">Log in</a>
+            <?php endif; ?>
           </li>
         </ul>
       </div>
