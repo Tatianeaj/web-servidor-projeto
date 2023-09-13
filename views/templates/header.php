@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Layout com Eventus e Menu</title>
+    <title>Eventus</title>
 
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
@@ -39,7 +39,7 @@
             <a href="index.php" class="text-gray-800 hover:text-indigo-600">Home</a>
           </li>
           <li>
-            <a href="#" class="text-gray-800 hover:text-indigo-600"
+            <a href="index.php?page=myEvents" class="text-gray-800 hover:text-indigo-600"
               >Meus Eventos</a
             >
           </li>
