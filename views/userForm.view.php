@@ -41,7 +41,7 @@
             <span class="block sm:inline"><?= $error_message ?></span>
           </div>
         <?php endif; ?>
-        <?php if ($sucess) : ?>
+        <?php if ($success) : ?>
           <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
             <span class="block sm:inline"><?= $success_message ?></span>
           </div>
