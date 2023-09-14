@@ -65,6 +65,9 @@
         ];
         
         $success = true;
+
+        setcookie('oldFormEmail', '', time() - 3600);
+        setcookie('oldFormName', '', time() - 3600);
         
         echo 'Usuário cadastrado com sucesso!';
         echo '<pre>';

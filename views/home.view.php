@@ -23,21 +23,30 @@
                 <h1 class="text-4xl font-semibold text-gray-800">Eventos em Destaque</h1>
                 <div class="flex flex-row justify-between container">
                     <?php foreach($events_data as $event): ?>
-                        <div class='box-border h-48 max-w-sm mx-auto mt-10 w-1/4 bg-white shadow-md rounded-lg overflow-hidden'>
-                            <div class="p-4">
-                                <h2 class="text-2xl font-semibold"><?= $event['nome'] ?></h2>
-                                <p><?= $event['place'] ?></p>
-                                <p><?= $event['data'] ?></p>
-                                <p><?= $event['horario'] ?></p>
+                        <div class='box-border max-w-sm mx-auto mt-10 w-1/4 bg-white shadow-md rounded-lg overflow-hidden'>
+                            <div class="p-4 pl-10">
+                                <h2 class="text-2xl font-semibold"><?= $event['name'] ?></h2>
+                                <p><?= $event['publicPlace'] ?></p>
+                                <p><?= $event['city'] ?>, <?= $event['state']?></p>
+                                <p><?= $event['date'] ?></p>
+                                <p><?= $event['startTime'] ?></p>
                             </div>
                             <?php // if user is logged in show button to register in event else show login button ?>
                             <?php if (isset($_SESSION['user'])): ?>
                                 <div class="flex justify-center items-center">
-                                    <a href="" class="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600">Inscrever-se</a>
+                                    <a 
+                                        href="" 
+                                        class="bg-indigo-600 text-white rounded-md px-4 py-2 mb-4 hover:bg-indigo-800">
+                                            Inscrever-se
+                                    </a>
                                 </div>
                             <?php else: ?>
                                 <div class="flex justify-center items-center">
-                                    <a href="index.php?page=login" class="bg-blue-500 text-white rounded-md px-4 py-2 mb-4 hover:bg-blue-600">Entre para participar</a>
+                                    <a 
+                                        href="index.php?page=login" 
+                                        class="bg-indigo-600 text-white rounded-md px-4 py-2 mb-4 hover:bg-indigo-800">
+                                            Entre para participar
+                                    </a>
                                 </div>
                             <?php endif; ?>
                         </div>

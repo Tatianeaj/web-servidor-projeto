@@ -7,6 +7,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-gray-200">
     <div class="flex flex-col h-screen justify-between">
         <?php 
@@ -34,9 +35,9 @@
                     <input type="password" id="senha" name="senha" class="w-full border-gray-300 bg-gray-100 border-2 rounded-md p-2 " >
                 </div> 
                 <?php if ($error): ?>
-                  <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                          <span class="block sm:inline"><?= $error_message ?></span>
-                  </div>
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline"><?= $error_message ?></span>
+                    </div>
                 <?php endif; ?>
                 <div class="mb-4 mt-4 w-full flex justify-center space-x-6">
                     <button type="submit" class="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600">Entrar</button>
@@ -46,7 +47,7 @@
         </div>
 				<?php endif; ?>
         <?php 
-          include('templates/footer.html');
+            include('templates/footer.html');
         ?>
     </div>
 </body>
