@@ -25,7 +25,7 @@
             </div>
             <div class="mb-4">
                 <label for="birthdate" class="block text-gray-600">Data de Nascimento:</label>
-                <input type="date" id="birthdate" name="birthdate" class="w-full bg-gray-100 border-gray-300 border-2  rounded-md p-2" >
+                <input type="date" id="birthdate" name="birthdate" value="<?= $oldFormBirthdate?>" class="w-full bg-gray-100 border-gray-300 border-2  rounded-md p-2" >
             </div>
             <div class="mb-4">
                 <label for="email" class="block text-gray-600">E-mail:</label>

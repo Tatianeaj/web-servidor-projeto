@@ -22,7 +22,7 @@
             > 
                 <div class="mb-4">
                     <label for="name" class="block text-gray-600">Nome do Evento:</label>
-                    <input type="text" id="name" name="name" class="w-full border-gray-300 bg-gray-100 border-2 rounded-md p-2" >
+                    <input type="text" id="name" name="name" value="<?=$oldEventName?>" class="w-full border-gray-300 bg-gray-100 border-2 rounded-md p-2" >
                 </div>
                 <div class="mb-4">
                     <label for="date" class="block text-gray-600">Data do Evento:</label>
@@ -30,15 +30,15 @@
                 </div>
                 <div class="mb-4">
                     <label for="startTime" class="block text-gray-600">Horário de Início do Evento:</label>
-                    <input type="time" id="startTime" name="startTime" class="w-full border-gray-300 bg-gray-100 border-2 rounded-md p-2" >
+                    <input type="time" id="startTime" name="startTime" value="<?=$oldStartTime?>" class="w-full border-gray-300 bg-gray-100 border-2 rounded-md p-2" >
                 </div>
                 <div class="mb-4">
                     <label for="publicPlace" class="block text-gray-600">Logradouro:</label>
-                    <input type="text" id="publicPlace" name="publicPlace" class="w-full border-gray-300 bg-gray-100 border-2 rounded-md p-2" >
+                    <input type="text" id="publicPlace" name="publicPlace" value="<?= $oldPublicPlace ?>" class="w-full border-gray-300 bg-gray-100 border-2 rounded-md p-2" >
                 </div>
                 <div class="mb-4">
                     <label for="city" class="block text-gray-600">Cidade:</label>
-                    <input type="text" id="city" name="city" class="w-full border-gray-300 bg-gray-100 border-2 rounded-md p-2" >
+                    <input type="text" id="city" name="city" value="<?= $oldCity ?>" class="w-full border-gray-300 bg-gray-100 border-2 rounded-md p-2" >
                 </div>
                 <div class="mb-4">
                     <label for="state" class="block text-gray-600">Estado:</label>

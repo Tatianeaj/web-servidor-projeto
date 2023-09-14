@@ -26,12 +26,12 @@
   //form validation
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //fill variables with form data
-    $name = $_POST['name'];
-    $city = $_POST['city'];
-    $publicPlace = $_POST['publicPlace'];
-    $state = $_POST['state'];
-    $date = $_POST['date'];
-    $startTime = $_POST['startTime'];
+    $oldEventName = $name = $_POST['name'];
+    $oldCity = $city = $_POST['city'];
+    $oldPublicPlace = $publicPlace = $_POST['publicPlace'];
+    $oldState = $state = $_POST['state'];
+    $oldDate = $date = $_POST['date'];
+    $oldStartTime = $startTime = $_POST['startTime'];
 
     //set cookies with form data
     setcookie('oldEventName', $name, time() + 3600);

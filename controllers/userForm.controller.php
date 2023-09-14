@@ -1,11 +1,12 @@
 <?php
-  include('models/user.model.php');
+  require('models/user.model.php');
   
   $error = false;
   $error_message = '';
   $success = false;
   $oldFormEmail = $_COOKIE['oldFormEmail'] ?? '';
   $oldFormName = $_COOKIE['oldFormName'] ?? '';
+  $oldFormBirthdate = $_COOKIE['oldFormBirthdate'] ?? '';
   
   if (isset($_SESSION['user'])) {
     header('Location: index.php?page=home');
@@ -13,14 +14,15 @@
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
+    $oldFormName = $name = $_POST['name'];
+    $oldFormEmail = $email = $_POST['email'];
     $password = $_POST['password'];
     $password_confirmation = $_POST['password_confirmation'];
-    $birthdate = $_POST['birthdate'];
+    $oldFormBirthdate = $birthdate = $_POST['birthdate'];
 
     setcookie('oldFormEmail', $email, time() + 3600);
     setcookie('oldFormName', $name, time() + 3600);
+    setcookie('oldFormBirthdate', $birthdate, time() + 3600);
 
     if (empty($name) || empty($email) || empty($password) || empty($password_confirmation) || empty($birthdate)) {
       $error = true;
@@ -68,6 +70,7 @@
 
         setcookie('oldFormEmail', '', time() - 3600);
         setcookie('oldFormName', '', time() - 3600);
+        setcookie('oldFormBirthdate', '', time() - 3600);
         
         echo 'Usuário cadastrado com sucesso!';
         echo '<pre>';
@@ -76,5 +79,5 @@
       }
     }
   }
-  include('views/userForm.view.php');
+  require('views/userForm.view.php');
 ?>
