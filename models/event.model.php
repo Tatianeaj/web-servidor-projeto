@@ -1,22 +1,28 @@
 <?php
     $events_data = [
         [
-            'place' => 'São Paulo',
-            'nome' => 'Festa do Peão',
-            'data' => '20/10/2020',
-            'horario' => '20:00',
+            'name' => 'Festa do Peão',
+            'date' => '20/10/2020',
+            'startTime' => '20:00',
+            'publicPlace' => 'Centro de Eventos',
+            'city' => 'São Paulo',
+            'state' => 'SP',
         ],
         [
-            'place' => 'São Paulo',
-            'nome' => 'Festa do Jão',
-            'data' => '20/10/2020',
-            'horario' => '20:00',
+            'name' => 'Festa do Jão',
+            'date' => '20/10/2020',
+            'startTime' => '20:00',
+            'publicPlace' => 'Prédio do Jão',
+            'city' => 'Ponta Grossa',
+            'state' => 'PR',
         ],
         [
-            'place' => 'São Paulo',
-            'nome' => 'Pamonhaço',
-            'data' => '20/10/2020',
-            'horario' => '20:00',
-        ]
+            'name' => 'Pamonhaço',
+            'date' => '20/10/2020',
+            'startTime' => '14:00',
+            'publicPlace' => 'Praça do Pamonhaço',
+            'city' => 'Ponta Grossa',
+            'state' => 'PR',
+        ],
     ];
 
