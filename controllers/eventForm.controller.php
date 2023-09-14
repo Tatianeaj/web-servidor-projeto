@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ];
 
     $success = true;
-    $error_message = 'Evento cadastrado com sucesso!';
+    $success_message = 'Evento cadastrado com sucesso!';
     //clear cookies
     setcookie('oldEventName', '', time() - 3600);
     setcookie('oldCity', '', time() - 3600);
@@ -78,11 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     setcookie('oldState', '', time() - 3600);
     setcookie('oldDate', '', time() - 3600);
     setcookie('oldStartTime', '', time() - 3600);
-
-    echo 'Evento cadastrado com sucesso!';
-    echo '<pre>';
-    var_dump($events_data);
-    echo '</pre>';
   }
 }
 require('views/eventForm.view.php');

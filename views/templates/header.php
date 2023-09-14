@@ -25,7 +25,7 @@
           <a href="index.php" class="text-gray-800 hover:text-indigo-600">Home</a>
         </li>
         <li>
-          <a href="#" class="text-gray-800 hover:text-indigo-600">Meus Eventos</a>
+          <a href="index.php?page=myEvents" class="text-gray-800 hover:text-indigo-600">Meus Eventos</a>
         </li>
         <li>
           <a href="index.php?page=eventForm" class="text-gray-800 hover:text-indigo-600">Cadastrar Eventos</a>

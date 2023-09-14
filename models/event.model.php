@@ -7,6 +7,7 @@ $events_data = [
     'publicPlace' => 'Centro de Eventos',
     'city' => 'São Paulo',
     'state' => 'SP',
+    'users' => ['gustavo@gmail.com']
   ],
   [
     'name' => 'Festa do Jão',
@@ -15,6 +16,7 @@ $events_data = [
     'publicPlace' => 'Prédio do Jão',
     'city' => 'Ponta Grossa',
     'state' => 'PR',
+    'users' => ['gustavo@gmail.com']
   ],
   [
     'name' => 'Pamonhaço',
@@ -23,5 +25,15 @@ $events_data = [
     'publicPlace' => 'Praça do Pamonhaço',
     'city' => 'Ponta Grossa',
     'state' => 'PR',
+    'users' => ['tatiane@gmail.com']
   ],
+  [
+    'name' => 'Festa Natalina',
+    'date' => '2022-12-24',
+    'startTime' => '20:00',
+    'publicPlace' => 'Shopping',
+    'city' => 'São Paulo',
+    'state' => 'SP',
+    'users' => []
+  ]
 ];

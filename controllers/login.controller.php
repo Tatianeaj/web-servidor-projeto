@@ -18,13 +18,14 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 	foreach ($users_data as $user) {
 		if ($user['email'] == $email && $user['password'] == $password) {
 			$user_exists = true;
+			$user_name = $user['name'];
 			break;
 		}
 	}
 	if ($user_exists) {
 		$_SESSION['user'] = [
 			'email' => $email,
-			'password' => $password
+			'name' => $user_name
 		];
 		header('Location: index.php?page=home');
 	} else {
