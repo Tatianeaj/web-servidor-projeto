@@ -51,6 +51,18 @@
             <span class="block sm:inline"><?= $error_message ?></span>
           </div>
         <?php endif; ?>
+
+        <?php if ($success) : ?>
+          <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline"><?= $success_message ?></span>
+          </div>
+          <script>
+            setTimeout(() => {
+              window.location.href = 'index.php';
+            }, 2500);
+          </script>
+        <?php endif; ?>
+
         <div class="mb-4 mx-auto text-center mt-4">
           <button type="submit" class="bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-800 ">Cadastrar Evento</button>
         </div>

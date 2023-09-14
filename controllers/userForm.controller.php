@@ -71,10 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       setcookie('oldFormName', '', time() - 3600);
       setcookie('oldFormBirthdate', '', time() - 3600);
 
-      echo 'Usuário cadastrado com sucesso!';
-      echo '<pre>';
-      echo var_dump($users_data);
-      echo '</pre>';
+      $success_message = 'Usuário cadastrado com sucesso!';
     }
   }
 }

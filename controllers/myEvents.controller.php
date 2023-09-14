@@ -1,26 +1,35 @@
-<?php 
+<?php
 require('models/event.model.php');
+include('utils/utils.php');
 
-    session_start();
+session_start();
+
+if (!isset($_SESSION['user'])) {
+  header('Location: index.php?page=login');
+}
 
 
-
-    if(!isset($_SESSION['user'])){
-        header('Location: index.php?page=login');
+$events = [];
+foreach ($events_data as $event) {
+  foreach ($event['users'] as $user) {
+    if ($user == $_SESSION['user']['email']) {
+      $events[] = $event;
     }
-           
+  }
+}
 
-    // verify if user is inside the array of user in each event of events_data
-    $eventos = [];
-    foreach ($events_data as $event) {
-        foreach ($event['users'] as $user) {
-            if ($user == $_SESSION['user']['email']) {
-                $eventos[] = $event;
-            }
-        }
-    }
+function shareEvent($event)
+{
+  $url = "https://twitter.com/intent/tweet?text=Evento: " . $event['name'] . " - " . $event['publicPlace'] . " - " . $event['city'] . " - " . $event['state'] . " - " . formatDate($event['date']) . " - " . $event['startTime'];
+  echo "window.open('" . $url . "', '_blank')";
+}
+
+function removeEvent($events, $event)
+{
+  $index = array_search($_SESSION['user']['email'], $event['users']);
+  unset($event['users'][$index]);
+  $events[$index] = $event;
+}
 
 
-
-    require('views/myEvents.view.php');
-?>
+require('views/myEvents.view.php');

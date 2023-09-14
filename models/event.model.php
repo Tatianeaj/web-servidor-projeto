@@ -7,7 +7,7 @@ $events_data = [
     'publicPlace' => 'Centro de Eventos',
     'city' => 'São Paulo',
     'state' => 'SP',
-    'users' => []
+    'users' => ['gustavo@gmail.com']
   ],
   [
     'name' => 'Festa do Jão',
@@ -27,4 +27,13 @@ $events_data = [
     'state' => 'PR',
     'users' => ['tatiane@gmail.com']
   ],
+  [
+    'name' => 'Festa Natalina',
+    'date' => '2022-12-24',
+    'startTime' => '20:00',
+    'publicPlace' => 'Shopping',
+    'city' => 'São Paulo',
+    'state' => 'SP',
+    'users' => []
+  ]
 ];
