@@ -80,4 +80,3 @@
     }
   }
   require('views/userForm.view.php');
-?>

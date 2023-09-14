@@ -28,4 +28,3 @@
     "SE" => "Sergipe",
     "TO" => "Tocantins"
   ];
-?>
