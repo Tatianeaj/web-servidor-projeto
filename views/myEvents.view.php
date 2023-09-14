@@ -33,7 +33,7 @@
             <div class="mb-4 w-full flex justify-center space-x-2">
               <button type="button" class="bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-800" onclick="<?php shareEvent($event) ?>">Compartilhar
               </button>
-              <button type="button" class="bg-red-600 text-white rounded-md px-4 py-2 hover:bg-red-900" onclick="<?php removeEvent($events, $event) ?>">Remover</button>
+              <button type="button" class="bg-red-600 text-white rounded-md px-4 py-2 hover:bg-red-900" onclick="<?php removeEvent($event, $events_data) ?>">Remover</button>
             </div>
           </div>
         <?php endforeach; ?>

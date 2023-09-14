@@ -40,7 +40,7 @@
 
                 <?php else : ?>
                   <div class="flex justify-center items-center">
-                    <a onclick="<?= subscribe($event) ?>" href="index.php?page=myEvents" class="bg-indigo-600 text-white rounded-md px-4 py-2 mb-4 hover:bg-indigo-800">
+                    <a onclick="<?= subscribe($event, $events_data) ?>" href="index.php?page=myEvents" class="bg-indigo-600 text-white rounded-md px-4 py-2 mb-4 hover:bg-indigo-800">
                       Inscrever-se
                     </a>
                   </div>

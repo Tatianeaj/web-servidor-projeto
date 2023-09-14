@@ -24,11 +24,11 @@ function shareEvent($event)
   echo "window.open('" . $url . "', '_blank')";
 }
 
-function removeEvent($events, $event)
+function removeEvent($event, $events_data)
 {
-  $index = array_search($_SESSION['user']['email'], $event['users']);
-  unset($event['users'][$index]);
-  $events[$index] = $event;
+  $index = array_search($event, $events_data);
+  $userIndex = array_search($_SESSION['user']['email'], $events_data[$index]['users']);
+  unset($events_data[$index]['users'][$userIndex]);
 }
 
 

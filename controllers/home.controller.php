@@ -5,13 +5,12 @@ include('utils/utils.php');
 session_start();
 
 
-function subscribe($event)
+function subscribe($event, $events_data)
 {
-
-  $index = array_search($_SESSION['user']['email'], $event['users']);
-  $event['users'][$index] = $_SESSION['user']['email'];
-  $events[$index] = $event;
+  $index = array_search($event, $events_data);
+  $events_data[$index]['users'][] = $_SESSION['user']['email'];
 }
+
 
 function isSubscribed($event)
 {
