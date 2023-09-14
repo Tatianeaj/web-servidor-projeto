@@ -26,7 +26,7 @@
                 <h2 class="text-2xl font-semibold"><?= $event['name'] ?></h2>
                 <p><?= $event['publicPlace'] ?></p>
                 <p><?= $event['city'] ?>, <?= $event['state'] ?></p>
-                <p><?= $event['date'] ?></p>
+                <p><?= formatDate($event['date']) ?></p>
                 <p><?= $event['startTime'] ?></p>
               </div>
               <?php if (isset($_SESSION['user'])) : ?>

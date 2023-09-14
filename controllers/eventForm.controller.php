@@ -2,12 +2,10 @@
 require('models/event.model.php');
 require('models/state.model.php');
 
-//set timezone to user timezone
 date_default_timezone_set('America/Sao_Paulo');
 //start session
 session_start();
 
-//verifica se o usuário está logado
 if (!isset($_SESSION['user'])) {
   header('Location: index.php?page=login');
 }

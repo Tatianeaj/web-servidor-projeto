@@ -2,7 +2,7 @@
 $events_data = [
   [
     'name' => 'Festa do Peão',
-    'date' => '20/10/2020',
+    'date' => '2022-10-20',
     'startTime' => '20:00',
     'publicPlace' => 'Centro de Eventos',
     'city' => 'São Paulo',
@@ -10,7 +10,7 @@ $events_data = [
   ],
   [
     'name' => 'Festa do Jão',
-    'date' => '20/10/2020',
+    'date' => '2022-10-27',
     'startTime' => '20:00',
     'publicPlace' => 'Prédio do Jão',
     'city' => 'Ponta Grossa',
@@ -18,7 +18,7 @@ $events_data = [
   ],
   [
     'name' => 'Pamonhaço',
-    'date' => '20/10/2020',
+    'date' => '2022-11-23',
     'startTime' => '14:00',
     'publicPlace' => 'Praça do Pamonhaço',
     'city' => 'Ponta Grossa',
