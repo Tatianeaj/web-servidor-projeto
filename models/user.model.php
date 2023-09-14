@@ -1,11 +1,15 @@
 <?php
-	$users_data = [
-		[
-			'email' => 'gustavo@gmail.com',
-			'senha' => '123'
-    ],
-		[
-			'email' => 'tatiane@gmail.com',
-			'senha' => '12345'
-		]
-	];
+$users_data = [
+	[
+		'name' => 'Gustavo',
+		'email' => 'gustavo@gmail.com',
+		'password' => '123',
+		'birthdate' => '1990-01-01'
+	],
+	[
+		'name' => 'Tatiane',
+		'email' => 'tatiane@gmail.com',
+		'password' => '12345',
+		'birthdate' => '1990-01-01'
+	]
+];

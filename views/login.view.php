@@ -28,8 +28,8 @@
             <input id="email" name="email" value="<?= $oldEmail ?>" class="w-full border-gray-300 bg-gray-100 border-2 rounded-md p-2">
           </div>
           <div class="mb-4">
-            <label for="senha" class="block text-gray-600">Senha:</label>
-            <input type="password" id="senha" name="senha" class="w-full border-gray-300 bg-gray-100 border-2 rounded-md p-2 ">
+            <label for="password" class="block text-gray-600">Senha:</label>
+            <input type="password" id="password" name="password" class="w-full border-gray-300 bg-gray-100 border-2 rounded-md p-2 ">
           </div>
           <?php if ($error) : ?>
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">

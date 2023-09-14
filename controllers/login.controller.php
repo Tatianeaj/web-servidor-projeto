@@ -7,16 +7,16 @@ $error_message = '';
 
 $oldEmail = $_COOKIE['oldEmail'] ?? '';
 
-if (isset($_POST['email']) && isset($_POST['senha'])) {
+if (isset($_POST['email']) && isset($_POST['password'])) {
 
 	$oldEmail = $email = $_POST['email'];
-	$senha = $_POST['senha'];
+	$password = $_POST['password'];
 
 	setcookie('oldEmail', $email);
 
 	$user_exists = false;
 	foreach ($users_data as $user) {
-		if ($user['email'] == $email && $user['senha'] == $senha) {
+		if ($user['email'] == $email && $user['password'] == $password) {
 			$user_exists = true;
 			break;
 		}
@@ -24,7 +24,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
 	if ($user_exists) {
 		$_SESSION['user'] = [
 			'email' => $email,
-			'senha' => $senha
+			'password' => $password
 		];
 		header('Location: index.php?page=home');
 	} else {
