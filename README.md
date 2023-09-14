@@ -9,8 +9,6 @@
 
 ## Funcionalidades faltantes
 - Usuário admin com privilégio de acesso
-- Inscrição em eventos através dos botões dos cartões dos eventos
-- Listagem de eventos inscritos para aquele usuário
 - Cadastro de usuários permanente
 - Cadastro de eventos permanente
 
