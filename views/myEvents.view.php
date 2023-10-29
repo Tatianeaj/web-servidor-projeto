@@ -1,3 +1,21 @@
+<?php
+
+function shareEvent($event)
+{
+  $url = "https://twitter.com/intent/tweet?text=Evento: " . $event['name'] . " - " . $event['publicPlace'] . " - " . $event['city'] . " - " . $event['state'] . " - " . formatDate($event['date']) . " - " . $event['startTime'];
+  echo "window.open('" . $url . "', '_blank')";
+}
+
+function removeEvent($event, $events_data)
+{
+  $index = array_search($event, $events_data);
+  $userIndex = array_search($_SESSION['user']['email'], $events_data[$index]['users']);
+  unset($events_data[$index]['users'][$userIndex]);
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -39,7 +57,6 @@
         <?php endforeach; ?>
       </div>
     </div>
-
     <?php
     include("templates/footer.html")
     ?>

@@ -15,7 +15,7 @@
     ?>
     <div class="mx-auto container max-w-xl bg-white p-6 rounded-md shadow-md mb-4">
       <h1 class="text-2xl font-semibold mb-4 mx-auto text-center">Cadastro de Usuário</h1>
-      <form action="index.php?page=userForm" method="POST" class="flex flex-col">
+      <form action="/register" method="POST" class="flex flex-col">
         <div class="mb-4">
           <label for="name" class="block text-gray-600">Nome:</label>
           <input type="text" id="name" name="name" value="<?= $oldFormName ?>" class="w-full border-gray-300 bg-gray-100 border-2 rounded-md p-2">
@@ -47,7 +47,7 @@
           </div>
           <script>
             setTimeout(() => {
-              window.location.href = 'index.php';
+              window.location.href = '/home';
             }, 2500);
           </script>
         <?php endif; ?>

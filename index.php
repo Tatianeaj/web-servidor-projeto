@@ -14,12 +14,16 @@
 
   use Pecee\SimpleRouter\SimpleRouter as Router;
 
-  Router::get('/', function () {
-    require 'controllers/home.controller.php';
-  });
-  Router::get('/home', function () {
-    require 'controllers/home.controller.php';
-  });
+  Router::get('/', 'HomeController@index');
+  Router::get('/home', 'HomeController@index');
+  Router::get('/login', 'LoginController@login');
+  Router::post('/login', 'LoginController@login');
+  Router::get('/logout', 'LogoutController@logout');
+  Router::get('/register', 'UserFormController@register');
+  Router::post('/register', 'UserFormController@register');
+  Router::get('/myEvents', 'MyEventsController@myEvents');
+  Router::get('/newEvent', 'EventFormController@newEvent');
+  Router::post('/newEvent', 'EventFormController@newEvent');
 
   Router::start();
 

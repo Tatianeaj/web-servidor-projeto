@@ -22,19 +22,19 @@
       </div>
       <ul class="flex space-x-6 text-lg">
         <li>
-          <a href="index.php" class="text-gray-800 hover:text-indigo-600">Home</a>
+          <a href="/home" class="text-gray-800 hover:text-indigo-600">Home</a>
         </li>
         <li>
-          <a href="index.php?page=myEvents" class="text-gray-800 hover:text-indigo-600">Meus Eventos</a>
+          <a href="/myEvents" class="text-gray-800 hover:text-indigo-600">Meus Eventos</a>
         </li>
         <li>
-          <a href="index.php?page=eventForm" class="text-gray-800 hover:text-indigo-600">Cadastrar Eventos</a>
+          <a href="/newEvent" class="text-gray-800 hover:text-indigo-600">Cadastrar Eventos</a>
         </li>
         <li>
           <?php if (isset($_SESSION['user'])) : ?>
-            <a href="index.php?page=logout" class="text-gray-800 hover:text-indigo-600">Sair</a>
+            <a href="/logout" class="text-gray-800 hover:text-indigo-600">Sair</a>
           <?php else : ?>
-            <a href="index.php?page=login" class="text-gray-800 hover:text-indigo-600">Login</a>
+            <a href="/login" class="text-gray-800 hover:text-indigo-600">Login</a>
           <?php endif; ?>
         </li>
       </ul>

@@ -1,3 +1,21 @@
+<?php
+function subscribe($event, $events_data)
+{
+  $index = array_search($event, $events_data);
+  $events_data[$index]['users'][] = $_SESSION['user']['email'];
+}
+
+function isSubscribed($event)
+{
+  foreach ($event['users'] as $user) {
+    if ($user == $_SESSION['user']['email']) {
+      return true;
+    }
+  }
+  return false;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,14 +58,14 @@
 
                 <?php else : ?>
                   <div class="flex justify-center items-center">
-                    <a onclick="<?= subscribe($event, $events_data) ?>" href="index.php?page=myEvents" class="bg-indigo-600 text-white rounded-md px-4 py-2 mb-4 hover:bg-indigo-800">
+                    <a onclick="<?= subscribe($event, $events_data) ?>" href="/myEvents" class="bg-indigo-600 text-white rounded-md px-4 py-2 mb-4 hover:bg-indigo-800">
                       Inscrever-se
                     </a>
                   </div>
                 <?php endif; ?>
               <?php else : ?>
                 <div class="flex justify-center items-center">
-                  <a href="index.php?page=login" class="bg-indigo-600 text-white rounded-md px-4 py-2 mb-4 hover:bg-indigo-800">
+                  <a href="/login" class="bg-indigo-600 text-white rounded-md px-4 py-2 mb-4 hover:bg-indigo-800">
                     Entre para participar
                   </a>
                 </div>

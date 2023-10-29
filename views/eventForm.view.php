@@ -16,7 +16,7 @@
     <div class="mx-auto container max-w-xl bg-white p-6 rounded-md shadow-md mb-4">
 
       <h1 class="text-2xl font-semibold mb-4 mx-auto text-center">Cadastro de Evento</h1>
-      <form action="index.php?page=eventForm" method="POST" class="flex flex-col">
+      <form action="/newEvent" method="POST" class="flex flex-col">
         <div class="mb-4">
           <label for="name" class="block text-gray-600">Nome do Evento:</label>
           <input type="text" id="name" name="name" value="<?= $oldEventName ?>" class="w-full border-gray-300 bg-gray-100 border-2 rounded-md p-2">

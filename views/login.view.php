@@ -22,7 +22,7 @@
     <?php else : ?>
       <div class="max-w-md mx-auto container bg-white p-6 rounded-md shadow-md">
         <h1 class="text-2xl font-semibold mb-4 text-center">Login de Usuário</h1>
-        <form action="index.php?page=login" method="POST" class="flex flex-col w-full">
+        <form action="login" method="POST" class="flex flex-col w-full">
           <div class="mb-4">
             <label for="email" class="block text-gray-600">E-mail:</label>
             <input id="email" name="email" value="<?= $oldEmail ?>" class="w-full border-gray-300 bg-gray-100 border-2 rounded-md p-2">
@@ -38,7 +38,7 @@
           <?php endif; ?>
           <div class="mb-4 mt-4 w-full flex justify-center space-x-6">
             <button type="submit" class="bg-indigo-600 text-white rounded-md px-6 py-2 hover:bg-indigo-800">Entrar</button>
-            <button type="button" class="bg-green-700 text-white rounded-md px-4 py-2 hover:bg-green-900" onclick="window.location.href='index.php?page=userForm'">Registrar</button>
+            <button type="button" class="bg-green-700 text-white rounded-md px-4 py-2 hover:bg-green-900" onclick="window.location.href='/register'">Registrar</button>
           </div>
         </form>
       </div>
