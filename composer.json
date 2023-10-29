@@ -1,0 +1,17 @@
+{
+    "name": "gusta/projeto",
+    "description": "projeto web servidor 2023/2",
+    "autoload": {
+        "classmap": ["./"]
+    },
+    "authors": [
+        {
+            "name": "Gus-Vilela",
+            "email": "gustavo.carvil@protonmail.com"
+        }
+    ],
+
+    "require": {
+        "pecee/simple-router": "5.3.0.5"
+    }
+}

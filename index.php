@@ -9,12 +9,27 @@
 
 <body>
   <?php
-  if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-  } else {
-    $page = 'home';
-  }
-  include "controllers/$page.controller.php"
+
+  require 'vendor/autoload.php';
+
+  use Pecee\SimpleRouter\SimpleRouter as Router;
+
+  Router::get('/', function () {
+    require 'controllers/home.controller.php';
+  });
+  Router::get('/home', function () {
+    require 'controllers/home.controller.php';
+  });
+
+  Router::start();
+
+  // if (isset($_GET['page'])) {
+  //   $page = $_GET['page'];
+  // } else {
+  //   $page = 'home';
+  // }
+  // include "controllers/$page.controller.php"
+
   ?>
 </body>
 
