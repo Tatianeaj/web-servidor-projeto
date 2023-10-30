@@ -149,15 +149,17 @@ class EventFormController
         $error = true;
         $error_message = 'Horário inválido!';
       } else {
-        //create event
-        $events_data[] = [
-          'name' => $name,
-          'city' => $city,
-          'publicPlace' => $publicPlace,
-          'state' => $state,
-          'date' => $date,
-          'startTime' => $startTime
-        ];
+        //create event object
+
+        // insert address info into database and get id
+        $bd = Connection::get();
+        $query = $bd->prepare('INSERT INTO address (city, publicPlace, state) VALUES (:city, :publicPlace, :state)');
+        $query->execute([':city' => $city, ':publicPlace' => $publicPlace, ':state' => $state]);
+        $address_id = $bd->lastInsertId();
+
+        // insert event info into database
+        $query = $bd->prepare('INSERT INTO events (name, date, startTime, cod_address) VALUES (:name, :date, :startTime, :cod_address)');
+        $query->execute([':name' => $name, ':date' => $date, ':startTime' => $startTime, ':cod_address' => $address_id]);
 
         $success = true;
         $success_message = 'Evento cadastrado com sucesso!';

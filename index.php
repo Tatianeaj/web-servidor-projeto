@@ -14,6 +14,7 @@
 
   use Pecee\SimpleRouter\SimpleRouter as Router;
 
+
   Router::get('/', 'HomeController@index');
   Router::get('/home', 'HomeController@index');
   Router::get('/login', 'LoginController@login');
@@ -24,15 +25,10 @@
   Router::get('/myEvents', 'MyEventsController@myEvents');
   Router::get('/newEvent', 'EventFormController@newEvent');
   Router::post('/newEvent', 'EventFormController@newEvent');
+  Router::get('/myEvents/remove/{cod_event}', 'MyEventsController@removeMyEvent');
+  Router::get('/myEvents/add/{cod_event}', 'MyEventsController@subscribeToEvent');
 
   Router::start();
-
-  // if (isset($_GET['page'])) {
-  //   $page = $_GET['page'];
-  // } else {
-  //   $page = 'home';
-  // }
-  // include "controllers/$page.controller.php"
 
   ?>
 </body>

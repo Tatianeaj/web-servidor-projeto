@@ -130,24 +130,48 @@ class UserFormController
         $error_message = 'Data de nascimento não pode ser no futuro!';
       } else {
 
-        $user_exists = false;
-        foreach ($users_data as $user) {
-          if ($user['email'] == $email) {
-            $user_exists = true;
-            break;
-          }
-        }
-        if ($user_exists) {
+        // $user_exists = false;
+        // foreach ($users_data as $user) {
+        //   if ($user['email'] == $email) {
+        //     $user_exists = true;
+        //     break;
+        //   }
+        // }
+        // if ($user_exists) {
+        //   $error = true;
+        //   $error_message = 'E-mail já cadastrado!';
+        // } else {
+
+        $bd = Connection::get();
+        $query = $bd->prepare('SELECT * FROM users WHERE email = :email');
+        $query->execute([':email' => $email]);
+        $user = $query->fetchObject('User');
+        if ($user) {
           $error = true;
           $error_message = 'E-mail já cadastrado!';
         } else {
 
-          $users_data[] = [
-            'name' => $name,
-            'email' => $email,
-            'password' => $password,
-            'birth_date' => $birthdate
-          ];
+          // $users_data[] = [
+          //   'name' => $name,
+          //   'email' => $email,
+          //   'password' => $password,
+          //   'birth_date' => $birthdate
+          // ];
+
+          //create user object and insert into database
+          $user = new User();
+          $user->name = $name;
+          $user->email = $email;
+          $user->password = $password;
+          $user->birthdate = $birthdate;
+          $query = $bd->prepare('INSERT INTO users (name, email, password, birthdate) VALUES (:name, :email, :password, :birthdate)');
+          $query->execute([
+            ':name' => $user->name,
+            ':email' => $user->email,
+            ':password' => $user->password,
+            ':birthdate' => $user->birthdate
+          ]);
+          $user->cod_user = $bd->lastInsertId();
 
           $success = true;
 
@@ -158,14 +182,14 @@ class UserFormController
           $success_message = 'Usuário cadastrado com sucesso!';
 
           $_SESSION['user'] = [
-            'email' => $email,
-            'name' => $name
+            'email' => $user->email,
+            'name' => $user->name,
+            'cod_user' => $user->cod_user
           ];
         }
       }
     }
     $this->render('userForm', [
-      'users_data' => $users_data,
       'error' => $error,
       'error_message' => $error_message,
       'success' => $success,
