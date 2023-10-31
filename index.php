@@ -27,6 +27,9 @@
   Router::post('/newEvent', 'EventFormController@newEvent');
   Router::get('/myEvents/remove/{cod_event}', 'MyEventsController@removeMyEvent');
   Router::get('/myEvents/add/{cod_event}', 'MyEventsController@subscribeToEvent');
+  Router::get('/home/remove/{cod_event}', 'HomeController@deleteEvent');
+  Router::get('/home/adit/{cod_event}', 'EventFormController@editEvent');
+  Router::post('/home/adit/{cod_event}', 'EventFormController@editEvent');
 
   Router::start();
 

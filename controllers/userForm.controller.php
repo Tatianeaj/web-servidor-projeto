@@ -129,19 +129,6 @@ class UserFormController
         $error = true;
         $error_message = 'Data de nascimento não pode ser no futuro!';
       } else {
-
-        // $user_exists = false;
-        // foreach ($users_data as $user) {
-        //   if ($user['email'] == $email) {
-        //     $user_exists = true;
-        //     break;
-        //   }
-        // }
-        // if ($user_exists) {
-        //   $error = true;
-        //   $error_message = 'E-mail já cadastrado!';
-        // } else {
-
         $bd = Connection::get();
         $query = $bd->prepare('SELECT * FROM users WHERE email = :email');
         $query->execute([':email' => $email]);
@@ -150,26 +137,19 @@ class UserFormController
           $error = true;
           $error_message = 'E-mail já cadastrado!';
         } else {
-
-          // $users_data[] = [
-          //   'name' => $name,
-          //   'email' => $email,
-          //   'password' => $password,
-          //   'birth_date' => $birthdate
-          // ];
-
-          //create user object and insert into database
           $user = new User();
           $user->name = $name;
           $user->email = $email;
           $user->password = $password;
           $user->birthdate = $birthdate;
-          $query = $bd->prepare('INSERT INTO users (name, email, password, birthdate) VALUES (:name, :email, :password, :birthdate)');
+          $user->isAdmin = false;
+          $query = $bd->prepare('INSERT INTO users (name, email, password, birthdate, isAdmin) VALUES (:name, :email, :password, :birthdate, :isAdmin)');
           $query->execute([
             ':name' => $user->name,
             ':email' => $user->email,
             ':password' => $user->password,
-            ':birthdate' => $user->birthdate
+            ':birthdate' => $user->birthdate,
+            ':isAdmin' => $user->isAdmin
           ]);
           $user->cod_user = $bd->lastInsertId();
 
@@ -184,7 +164,8 @@ class UserFormController
           $_SESSION['user'] = [
             'email' => $user->email,
             'name' => $user->name,
-            'cod_user' => $user->cod_user
+            'cod_user' => $user->cod_user,
+            'isAdmin' => $user->isAdmin
           ];
         }
       }

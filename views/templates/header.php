@@ -27,9 +27,14 @@
         <li>
           <a href="/myEvents" class="text-gray-800 hover:text-indigo-600">Meus Eventos</a>
         </li>
-        <li>
-          <a href="/newEvent" class="text-gray-800 hover:text-indigo-600">Cadastrar Eventos</a>
-        </li>
+
+        <?php
+        if (isset($_SESSION['user']['isAdmin']) && $_SESSION['user']['isAdmin']) : ?>
+          <li>
+            <a href="/newEvent" class="text-gray-800 hover:text-indigo-600">Cadastrar Eventos</a>
+          </li>
+        <?php endif; ?>
+
         <li>
           <?php if (isset($_SESSION['user'])) : ?>
             <a href="/logout" class="text-gray-800 hover:text-indigo-600">Sair</a>

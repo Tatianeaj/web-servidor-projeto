@@ -39,7 +39,12 @@ function isSubscribed($event)
         <h1 class="text-4xl font-semibold text-gray-800 mb-10">Eventos em Destaque</h1>
         <div class="flex flex-row flex-wrap max-w-5xl">
           <?php foreach ($events_data as $event) : ?>
-            <div class='box-border mb-6 w-72 ml-8 bg-white shadow-md rounded-lg overflow-hidden'>
+            <div class='box-border mb-6 w-72 ml-8 bg-white shadow-md rounded-lg overflow-hidden p-2'>
+              <?php if ((isset($_SESSION['user'])) && $_SESSION['user']['isAdmin']) : ?>
+                <a href="/home/remove/<?= $event->cod_event ?>" class="bg-red-600 text-white rounded-lg px-3 py-1 hover:bg-red-900">
+                  X
+                </a>
+              <?php endif; ?>
               <div class="py-6 pl-10">
                 <h2 class="text-2xl font-semibold mb-2"><?= $event->name ?></h2>
                 <p class="text-lg"><?= $event->address->publicPlace ?></p>
@@ -48,21 +53,32 @@ function isSubscribed($event)
                 <p class="text-lg"><?= $event->startTime ?></p>
               </div>
               <?php if (isset($_SESSION['user'])) : ?>
-                <?php if ($event->isUserSubscribed($_SESSION['user']['cod_user'])) :
-                ?>
-                  <div class="flex justify-center items-center">
-                    <button class="bg-indigo-800 text-white rounded-md px-6 py-2 mb-4" disabled>
-                      Inscrito
-                    </button>
-                  </div>
+                <div class="w-full flex justify-center space-x-2">
+                  <?php if ($_SESSION['user']['isAdmin']) : ?>
+                    <div class="flex justify-center items-center">
+                      <a href="/home/adit/<?= $event->cod_event ?>" class="bg-indigo-600 text-white rounded-md px-4 py-2 mb-4 hover:bg-indigo-800">
+                        Editar
+                      </a>
+                    </div>
+                  <?php endif; ?>
 
-                <?php else : ?>
-                  <div class="flex justify-center items-center">
-                    <a href="/myEvents/add/<?= $event->cod_event ?>" class="bg-indigo-600 text-white rounded-md px-4 py-2 mb-4 hover:bg-indigo-800">
-                      Inscrever-se
-                    </a>
-                  </div>
-                <?php endif; ?>
+                  <?php if ($event->isUserSubscribed($_SESSION['user']['cod_user'])) :
+                  ?>
+                    <div class="flex justify-center items-center">
+                      <button class="bg-indigo-800 text-white rounded-md px-6 py-2 mb-4" disabled>
+                        Inscrito
+                      </button>
+                    </div>
+
+                  <?php else : ?>
+                    <div class="flex justify-center items-center">
+                      <a href="/myEvents/add/<?= $event->cod_event ?>" class="bg-indigo-600 text-white rounded-md px-4 py-2 mb-4 hover:bg-indigo-800">
+                        Inscrever-se
+                      </a>
+                    </div>
+                  <?php endif; ?>
+
+                </div>
               <?php else : ?>
                 <div class="flex justify-center items-center">
                   <a href="/login" class="bg-indigo-600 text-white rounded-md px-4 py-2 mb-4 hover:bg-indigo-800">

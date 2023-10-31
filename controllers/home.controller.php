@@ -30,9 +30,7 @@ class HomeController
   public function index()
   {
     session_start();
-    include('models/event.model.php');
     include('utils/utils.php');
-    include('database/connection.php');
 
     $events_data = $events_data ?? [];
 
@@ -52,5 +50,18 @@ class HomeController
       'user_name' => $user_name ?? '',
       'user_email' => $user_email ?? '',
     ]);
+  }
+
+  public function deleteEvent($cod_event)
+  {
+    session_start();
+    if (!isset($_SESSION['user']) || $_SESSION['user']['isAdmin'] == 0) {
+      header('Location: /home');
+    } else {
+      $bd = Connection::get();
+      $query = $bd->prepare('DELETE FROM events WHERE events.cod_event = :cod_event');
+      $query->execute([':cod_event' => $cod_event]);
+      header('Location: /home');
+    }
   }
 }

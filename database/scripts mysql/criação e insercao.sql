@@ -8,6 +8,7 @@ name varchar(100),
 birthdate date,
 email varchar(70),
 password varchar(50),
+isAdmin boolean,
 PRIMARY KEY(cod_user)
 );
 
@@ -33,13 +34,13 @@ create table users_events(
 cod_event int,
 cod_user int,
 PRIMARY KEY(cod_event, cod_user),
-FOREIGN KEY(cod_event) references events(cod_event),
-FOREIGN KEY(cod_user) references users(cod_user)
+FOREIGN KEY(cod_event) REFERENCES events(cod_event) ON DELETE CASCADE,
+FOREIGN KEY(cod_user) REFERENCES users(cod_user) ON DELETE CASCADE
 );
 
 
-
-insert into users(name, birthdate, email, password) values("Paula", "1999-01-23","paula1999@hotmail.com","paula@123");
+insert into users(name, birthdate, email, password, isAdmin) values("Paula", "1999-01-23","paula1999@hotmail.com","paula@123",false);
+insert into users(name, birthdate, email, password, isAdmin) values("Gustavo", "1998-05-25","admin@gmail.com","admin@9609",true);
 insert into address(publicPlace, city, state) values("Mansão Hilda", "Ponta Grossa", "PR");
 insert into address(publicPlace, city, state) values("Opera de arame", "Curitiba", "PR");
 insert into address(publicPlace, city, state) values("Senac", "São Carlos", "SP");

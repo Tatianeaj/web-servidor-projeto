@@ -62,7 +62,8 @@ class LoginController
 				$_SESSION['user'] = [
 					'email' => $user->email,
 					'name' => $user->name,
-					'cod_user' => $user->cod_user
+					'cod_user' => $user->cod_user,
+					'isAdmin' => $user->isAdmin
 				];
 				header('Location: /home');
 			} else {

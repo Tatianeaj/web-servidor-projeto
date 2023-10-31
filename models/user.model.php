@@ -21,6 +21,7 @@ class User
 	private $email;
 	private $password;
 	private $birthdate;
+	private $isAdmin;
 
 	public function __get($prop)
 	{
