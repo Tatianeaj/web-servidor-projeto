@@ -1,90 +1,45 @@
 <?php
-// require('models/event.model.php');
-// require('models/state.model.php');
-
-// date_default_timezone_set('America/Sao_Paulo');
-// //start session
-// session_start();
-
-// if (!isset($_SESSION['user'])) {
-//   header('Location: index.php?page=login');
-// }
-
-// $error = false;
-// $error_message = '';
-// $success = false;
-
-// $oldEventName = $_COOKIE['oldEventName'] ?? '';
-// $oldCity = $_COOKIE['oldCity'] ?? '';
-// $oldPublicPlace = $_COOKIE['oldPublicPlace'] ?? '';
-// $oldState = $_COOKIE['oldState'] ?? '';
-// $oldDate = $_COOKIE['oldDate'] ?? '';
-// $oldStartTime = $_COOKIE['oldStartTime'] ?? '';
-
-// //form validation
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//   //fill variables with form data
-//   $oldEventName = $name = $_POST['name'];
-//   $oldCity = $city = $_POST['city'];
-//   $oldPublicPlace = $publicPlace = $_POST['publicPlace'];
-//   $oldState = $state = $_POST['state'];
-//   $oldDate = $date = $_POST['date'];
-//   $oldStartTime = $startTime = $_POST['startTime'];
-
-//   //set cookies with form data
-//   setcookie('oldEventName', $name, time() + 3600);
-//   setcookie('oldCity', $city, time() + 3600);
-//   setcookie('oldPublicPlace', $publicPlace, time() + 3600);
-//   setcookie('oldState', $state, time() + 3600);
-//   setcookie('oldDate', $date, time() + 3600);
-//   setcookie('oldStartTime', $startTime, time() + 3600);
-
-//   //check if all fields are filled
-//   if (
-//     empty($name) ||
-//     empty($city) ||
-//     empty($publicPlace) ||
-//     empty($state) ||
-//     empty($date) ||
-//     empty($startTime)
-//   ) {
-//     $error = true;
-//     $error_message = 'Preencha todos os campos!';
-//   } else if (strtotime($date) < strtotime(date('Y-m-d'))) {
-//     $error = true;
-//     $error_message = 'Data inválida!';
-//     //if yyyy-mm-dd is equal to today
-//   } else if (strtotime($date) === strtotime(date('Y-m-d')) && strtotime($startTime) < strtotime(date('H:i'))) {
-//     //if start time is less than current time
-//     $error = true;
-//     $error_message = 'Horário inválido!';
-//   } else {
-//     //create event
-//     $events_data[] = [
-//       'name' => $name,
-//       'city' => $city,
-//       'publicPlace' => $publicPlace,
-//       'state' => $state,
-//       'date' => $date,
-//       'startTime' => $startTime
-//     ];
-
-//     $success = true;
-//     $success_message = 'Evento cadastrado com sucesso!';
-//     //clear cookies
-//     setcookie('oldEventName', '', time() - 3600);
-//     setcookie('oldCity', '', time() - 3600);
-//     setcookie('oldPublicPlace', '', time() - 3600);
-//     setcookie('oldState', '', time() - 3600);
-//     setcookie('oldDate', '', time() - 3600);
-//     setcookie('oldStartTime', '', time() - 3600);
-//   }
-// }
-// require('views/eventForm.view.php');
-
-class EventFormController
+class EventController
 {
   use ViewTrait;
+
+  public function ListEvents()
+  {
+    session_start();
+    include('utils/utils.php');
+
+    $events_data = $events_data ?? [];
+
+    $bd = Connection::get();
+    $query = $bd->prepare('SELECT * FROM events');
+    $query->execute();
+    $events_data = $query->fetchAll(PDO::FETCH_CLASS, 'Event');
+    $query = $bd->prepare('SELECT * FROM address WHERE address.cod_address = :id');
+    foreach ($events_data as $event) {
+      $query->execute([':id' => $event->cod_address]);
+      $address = $query->fetchObject('Address');
+      $event->address = $address;
+    }
+
+    $this->render('events', [
+      'events_data' => $events_data,
+      'user_name' => $user_name ?? '',
+      'user_email' => $user_email ?? '',
+    ]);
+  }
+
+  public function deleteEvent($cod_event)
+  {
+    session_start();
+    if (!isset($_SESSION['user']) || $_SESSION['user']['isAdmin'] == 0) {
+      header('Location: /events');
+    } else {
+      $bd = Connection::get();
+      $query = $bd->prepare('DELETE FROM events WHERE events.cod_event = :cod_event');
+      $query->execute([':cod_event' => $cod_event]);
+      header('Location: /events');
+    }
+  }
 
   public function newEvent()
   {
@@ -95,7 +50,7 @@ class EventFormController
     session_start();
 
     if ($_SESSION['user']["isAdmin"] == 0) {
-      header('Location: /home');
+      header('Location: /events');
     }
 
     $error = false;
@@ -161,7 +116,7 @@ class EventFormController
         $query->execute([':name' => $name, ':date' => $date, ':startTime' => $startTime, ':cod_address' => $address_id]);
 
         $success = true;
-        $success_message = 'Evento cadastrado com sucesso!';
+        $success_message = 'Evento cadastrado! Redirecionando...';
         //clear cookies
         setcookie('oldEventName', '', time() - 3600);
         setcookie('oldCity', '', time() - 3600);
@@ -193,7 +148,7 @@ class EventFormController
     session_start();
 
     if ($_SESSION['user']["isAdmin"] == 0) {
-      header('Location: /home');
+      header('Location: /events');
     }
 
     $error = false;
@@ -268,7 +223,7 @@ class EventFormController
         $query->execute([':name' => $name, ':date' => $date, ':startTime' => $startTime, ':cod_event' => $cod_event]);
 
         $success = true;
-        $success_message = 'Evento editado com sucesso!';
+        $success_message = 'Evento editado! Redirecionando...';
 
         //clear cookies
         setcookie('oldEventName', '', time() - 3600);
@@ -278,7 +233,7 @@ class EventFormController
         setcookie('oldDate', '', time() - 3600);
         setcookie('oldStartTime', '', time() - 3600);
 
-        header('Location: /home');
+        header('Location: /events');
       }
     }
     $this->render('eventForm', [

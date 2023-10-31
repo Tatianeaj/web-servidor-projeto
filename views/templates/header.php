@@ -22,7 +22,7 @@
       </div>
       <ul class="flex space-x-6 text-lg">
         <li>
-          <a href="/home" class="text-gray-800 hover:text-indigo-600">Home</a>
+          <a href="/events" class="text-gray-800 hover:text-indigo-600">Eventos</a>
         </li>
         <li>
           <a href="/myEvents" class="text-gray-800 hover:text-indigo-600">Meus Eventos</a>

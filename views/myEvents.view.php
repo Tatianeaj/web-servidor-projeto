@@ -1,15 +1,3 @@
-<?php
-
-// function removeEvent($event, $events_data)
-// {
-//   $index = array_search($event, $events_data);
-//   $userIndex = array_search($_SESSION['user']['email'], $events_data[$index]['users']);
-//   unset($events_data[$index]['users'][$userIndex]);
-// }
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 

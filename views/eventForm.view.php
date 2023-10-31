@@ -18,7 +18,7 @@
       <h1 class="text-2xl font-semibold mb-4 mx-auto text-center">Cadastro de Evento</h1>
       <form action="<?php
                     if (isset($cod_event)) {
-                      echo "/home/adit/" . $cod_event;
+                      echo "/events/adit/" . $cod_event;
                     } else {
                       echo "/newEvent";
                     }
@@ -65,7 +65,7 @@
           </div>
           <script>
             setTimeout(() => {
-              window.location.href = '/home';
+              window.location.href = '/events';
             }, 2500);
           </script>
         <?php endif; ?>

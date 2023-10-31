@@ -41,7 +41,7 @@ function isSubscribed($event)
           <?php foreach ($events_data as $event) : ?>
             <div class='box-border mb-6 w-72 ml-8 bg-white shadow-md rounded-lg overflow-hidden p-2'>
               <?php if ((isset($_SESSION['user'])) && $_SESSION['user']['isAdmin']) : ?>
-                <a href="/home/remove/<?= $event->cod_event ?>" class="bg-red-600 text-white rounded-lg px-3 py-1 hover:bg-red-900">
+                <a href="/events/remove/<?= $event->cod_event ?>" class="bg-red-600 text-white rounded-lg px-3 py-1 hover:bg-red-900">
                   X
                 </a>
               <?php endif; ?>
@@ -56,7 +56,7 @@ function isSubscribed($event)
                 <div class="w-full flex justify-center space-x-2">
                   <?php if ($_SESSION['user']['isAdmin']) : ?>
                     <div class="flex justify-center items-center">
-                      <a href="/home/adit/<?= $event->cod_event ?>" class="bg-indigo-600 text-white rounded-md px-4 py-2 mb-4 hover:bg-indigo-800">
+                      <a href="/events/adit/<?= $event->cod_event ?>" class="bg-indigo-600 text-white rounded-md px-4 py-2 mb-4 hover:bg-indigo-800">
                         Editar
                       </a>
                     </div>

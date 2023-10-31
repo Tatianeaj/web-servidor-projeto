@@ -47,7 +47,7 @@
           </div>
           <script>
             setTimeout(() => {
-              window.location.href = '/home';
+              window.location.href = '/events';
             }, 2500);
           </script>
         <?php endif; ?>
