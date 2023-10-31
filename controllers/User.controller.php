@@ -121,7 +121,7 @@ class UserController
 					setcookie('oldFormName', '', time() - 3600);
 					setcookie('oldFormBirthdate', '', time() - 3600);
 
-					$success_message = 'Usuário cadastrado com sucesso!';
+					$success_message = 'Usuário cadastrado! Redirecionando...';
 
 					$_SESSION['user'] = [
 						'email' => $user->email,

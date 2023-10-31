@@ -15,7 +15,13 @@
     ?>
     <div class="mx-auto container max-w-xl bg-white p-6 rounded-md shadow-md mb-4">
 
-      <h1 class="text-2xl font-semibold mb-4 mx-auto text-center">Cadastro de Evento</h1>
+      <h1 class="text-2xl font-semibold mb-4 mx-auto text-center">
+        <?php if (isset($cod_event)) : ?>
+          Editar Evento
+        <?php else : ?>
+          Cadastrar Evento
+        <?php endif; ?>
+      </h1>
       <form action="<?php
                     if (isset($cod_event)) {
                       echo "/events/adit/" . $cod_event;
@@ -71,7 +77,13 @@
         <?php endif; ?>
 
         <div class="mb-4 mx-auto text-center mt-4">
-          <button type="submit" class="bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-800 ">Cadastrar Evento</button>
+          <button type="submit" class="bg-indigo-600 text-white rounded-md px-4 py-2 hover:bg-indigo-800 ">
+            <?php if (isset($cod_event)) : ?>
+              Editar Evento
+            <?php else : ?>
+              Cadastrar Evento
+            <?php endif; ?>
+          </button>
         </div>
       </form>
     </div>
