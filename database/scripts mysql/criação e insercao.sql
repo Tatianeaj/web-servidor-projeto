@@ -52,5 +52,6 @@ insert into address(publicPlace, city, state) values("Centro de Eventos POA", "P
 insert into address(publicPlace, city, state) values("Praia Moreninha", "Fortaleza", "CE");
 insert into address(publicPlace, city, state) values("Teatro Raio de Sol", "Palmas", "TO");
 insert into events(name, date, startTime, cod_address) values("Pamonhaço", "2023-12-12", "17:00", 1);
+insert into events(name, date, startTime, cod_address) values("Festa do Peão", "2023-11-14", "13:00", 4);
 insert into users_events(cod_event, cod_user) values(1,1);
 
